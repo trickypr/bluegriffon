@@ -225,14 +225,19 @@ static int do_main(int argc, char* argv[], char* envp[]) {
   return gBootstrap->XRE_main(argc, argv, config);
 }
 
-static nsresult InitXPCOMGlue(const char* argv0) {
+static nsresult InitXPCOMGlue(LibLoadingStrategy aLibLoadingStrategy) {
+  if (gBootstrap) {
+    return NS_OK;
+  }
+
   UniqueFreePtr<char> exePath = BinaryPath::Get();
   if (!exePath) {
     Output("Couldn't find the application directory.\n");
     return NS_ERROR_FAILURE;
   }
 
-  auto bootstrapResult = mozilla::GetBootstrap(exePath.get());
+  auto bootstrapResult =
+      mozilla::GetBootstrap(exePath.get(), aLibLoadingStrategy);
   if (bootstrapResult.isErr()) {
     Output("Couldn't load XPCOM.\n");
     return NS_ERROR_FAILURE;
@@ -266,12 +271,16 @@ int main(int argc, char* argv[], char* envp[]) {
     }
 #  endif
 
-    nsresult rv = InitXPCOMGlue(argv[0]);
+    nsresult rv = InitXPCOMGlue(LibLoadingStrategy::NoReadAhead);
     if (NS_FAILED(rv)) {
       return 255;
     }
 
     int result = content_process_main(gBootstrap.get(), argc, argv);
+
+#  if defined(DEBUG) && defined(HAS_DLL_BLOCKLIST)
+    DllBlocklist_Shutdown();
+#  endif
 
     // InitXPCOMGlue calls NS_LogInit, so we need to balance it here.
     gBootstrap->NS_LogTerm();
@@ -280,7 +289,7 @@ int main(int argc, char* argv[], char* envp[]) {
   }
 #endif
 
-  nsresult rv = InitXPCOMGlue(argv[0]);
+  nsresult rv = InitXPCOMGlue(LibLoadingStrategy::ReadAhead);
   if (NS_FAILED(rv)) {
     return 255;
   }

@@ -1,5 +1,5 @@
-<?xml version="1.0"?> <!-- -*- Mode: HTML -*- --> 
-
+<?xml version="1.0"?>
+<!-- -*- Mode: HTML -*- -->
 # ***** BEGIN LICENSE BLOCK *****
 # Version: MPL 1.1/GPL 2.0/LGPL 2.1
 #
@@ -21,8 +21,8 @@
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
-#   Daniel Glazman <daniel.glazman@disruptive-innovations.com>
-#
+#   Daniel Glazman<daniel.glazman @disruptive-innovations.com=>
+  #
 # Alternatively, the contents of this file may be used under the terms of
 # either the GNU General Public License Version 2 or later (the "GPL"), or
 # the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
@@ -38,91 +38,76 @@
 # ***** END LICENSE BLOCK ***** -->
 
 #filter substitution
+  <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+  <?xml-stylesheet href="chrome://bluegriffon/skin/aboutDialog.css" type="text/css"?>
 
-<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
-<?xml-stylesheet href="chrome://bluegriffon/skin/aboutDialog.css" type="text/css"?> 
-
-<!DOCTYPE dialog [
-<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
-%brandDTD;
-<!ENTITY % aboutDialogDTD SYSTEM "chrome://bluegriffon/locale/aboutDialog.dtd" >
-%aboutDialogDTD;
+  <!DOCTYPE dialog [
+    <!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+    %brandDTD;
+    <!ENTITY % aboutDialogDTD SYSTEM "chrome://bluegriffon/locale/aboutDialog.dtd">
+    %aboutDialogDTD;
 ]>
 
-    
-<dialog xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        id="aboutDialog"
-#ifdef XP_MACOSX
-        buttons="accept"
-#else
-        buttons=","
-#endif
-        windowtype="BlueGriffon:About"
-        title="&aboutDialog.title;"
-        onload="Startup()"
-        forcecleartheme="true"
-        persist="screenX screenY">
 
-  <script type="application/x-javascript" src="chrome://bluegriffon/content/utils/global.js"/>
-  <script type="application/x-javascript" src="chrome://bluegriffon/content/utils/dgid.js"/>
-  <script type="application/x-javascript" src="chrome://bluegriffon/content/dialogs/aboutDialog.js"/>
 
-  <tabbox flex="1">
-    <tabs>
-      <tab label="&aboutTab.label;"/>
-      <tab label="&creditsTab.label;"/>
-      <tab label="++"/>
-      <tab label="&buildConfigTab.label;"/>
-    </tabs>
-    <tabpanels flex="1">
-      <vbox flex="1">
-        <hbox>
-          <spacer flex="1"/>
-          <image src="chrome://bluegriffon/skin/about-logo.png"
-                 imagetheming="never"
-                 style="border-radius: 15px;"/>
-          <spacer flex="1"/>
-        </hbox>
-  
-        <hbox>
-          <spacer flex="1"/>
-          <label id="version" value="&aboutVersion; @APP_VERSION@"/>
-          <spacer flex="1"/>
-        </hbox>
-  
-        <hbox>
-          <spacer flex="1"/>
-          <label id="build" value="Build @GRE_BUILDID@"/>
-          <spacer flex="1"/>
-        </hbox>
-  
-        <hbox>
-          <spacer flex="1"/>
-          <label id="codename" value="&codeName; '@CODE_NAME@'"/>
-          <spacer flex="1"/>
-        </hbox>
-  
-        <hbox>
-          <spacer flex="1"/>
-          <description id="copyright">&copyrightText;</description>
-          <spacer flex="1"/>
-        </hbox>
+  <dialog xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="aboutDialog" #ifdef XP_MACOSX buttons="accept" #else buttons="," #endif windowtype="BlueGriffon:About" title="&aboutDialog.title;" onload="Startup()" forcecleartheme="true" persist="screenX screenY">
 
-        <vbox id="detailsBox" align="center" flex="1">
-          <description id="userAgent"/>
+    <script type="application/x-javascript" src="chrome://bluegriffon/content/utils/global.js" />
+    <script type="application/x-javascript" src="chrome://bluegriffon/content/utils/dgid.js" />
+    <script type="application/x-javascript" src="chrome://bluegriffon/content/dialogs/aboutDialog.js" />
+
+    <tabbox flex="1">
+      <tabs>
+        <tab label="&aboutTab.label;" />
+        <tab label="&creditsTab.label;" />
+        <tab label="++" />
+        <tab label="&buildConfigTab.label;" />
+      </tabs>
+      <tabpanels flex="1">
+        <vbox flex="1">
+          <hbox>
+            <spacer flex="1" />
+            <image src="chrome://bluegriffon/skin/about-logo.png" imagetheming="never" style="border-radius: 15px;" />
+            <spacer flex="1" />
+          </hbox>
+
+          <hbox>
+            <spacer flex="1" />
+            <label id="version" value="&aboutVersion; APP_VERSION" />
+            <spacer flex="1" />
+          </hbox>
+
+          <hbox>
+            <spacer flex="1" />
+            <label id="build" value="Build GRE_BUILDID" />
+            <spacer flex="1" />
+          </hbox>
+
+          <hbox>
+            <spacer flex="1" />
+            <label id="codename" value="&codeName; 'CODE_NAME'" />
+            <spacer flex="1" />
+          </hbox>
+
+          <hbox>
+            <spacer flex="1" />
+            <description id="copyright">&copyrightText;</description>
+            <spacer flex="1" />
+          </hbox>
+
+          <vbox id="detailsBox" align="center" flex="1">
+            <description id="userAgent" />
+          </vbox>
         </vbox>
-      </vbox>
-      <iframe flex="1" id="iframe"/>
-      <vbox align="center" id="awardsBox">
-        <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/sill.png"/>
-        <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/owf.png"/>
-        <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/meta.png"/>
-        <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/netexplo.png"/>
-        <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/wh.png"/>
-      </vbox>
-      <iframe flex="1" src="about:buildconfig"/>
-    </tabpanels>
-  </tabbox>
-</dialog>
-
+        <iframe flex="1" id="iframe" />
+        <vbox align="center" id="awardsBox">
+          <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/sill.png" />
+          <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/owf.png" />
+          <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/meta.png" />
+          <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/netexplo.png" />
+          <image imagetheming="never" src="chrome://bluegriffon/content/dialogs/awards/wh.png" />
+        </vbox>
+        <iframe flex="1" src="about:buildconfig" />
+      </tabpanels>
+    </tabbox>
+  </dialog>
