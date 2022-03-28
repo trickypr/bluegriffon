@@ -38,6 +38,11 @@
 
 MOZ_APP_VENDOR=Disruptive\ Innovations\ SARL
 
+echo ""
+echo "Confvars loaded"
+echo "==============="
+echo ""
+
 MOZ_APP_NAME=bluegriffon
 MOZ_APP_DISPLAYNAME=BlueGriffon
 MOZ_APP_BASENAME=BlueGriffon
@@ -56,10 +61,10 @@ MOZ_APP_STATIC_INI=1
 MOZ_CHROME_FILE_FORMAT=jar
 
 MOZ_APP_VERSION_TXT=${_topsrcdir}/$MOZ_BUILD_APP/config/version.txt
-MOZ_APP_VERSION=`cat $MOZ_APP_VERSION_TXT`
+MOZ_APP_VERSION=$(cat $MOZ_APP_VERSION_TXT)
 
 MOZ_APP_CODENAME_TXT=${_topsrcdir}/$MOZ_BUILD_APP/config/codename.txt
-MOZ_APP_CODENAME=`cat $MOZ_APP_CODENAME_TXT`
+MOZ_APP_CODENAME=$(cat $MOZ_APP_CODENAME_TXT)
 
 MOZ_APP_ID=bluegriffon@bluegriffon.com
 

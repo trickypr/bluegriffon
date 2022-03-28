@@ -40,35 +40,29 @@
 #include "nsIServiceManager.h"
 #include "diOSIntegration.h"
 #include "diOSIntegrationCIID.h"
-#include "nsXPIDLString.h"
+#include "nsString.h"
 
-namespace mozilla
-{
+namespace mozilla {
 // Factory defined in mozilla::, defines mozilla::diOSIntegrationConstructor
 NS_GENERIC_FACTORY_CONSTRUCTOR(diOSIntegration)
-}
+}  // namespace mozilla
 
 NS_DEFINE_NAMED_CID(DI_OS_INTEGRATION_CID);
 
 static const mozilla::Module::CIDEntry kCIDs[] = {
-  { &kDI_OS_INTEGRATION_CID, false, nullptr, mozilla::diOSIntegrationConstructor },
-  { NULL }
-};
+    {&kDI_OS_INTEGRATION_CID, false, nullptr,
+     mozilla::diOSIntegrationConstructor},
+    {NULL}};
 
 static const mozilla::Module::ContractIDEntry kContracts[] = {
-  { DI_OS_INTEGRATION_CONTRACTID, &kDI_OS_INTEGRATION_CID },
-  { NULL }
-};
+    {DI_OS_INTEGRATION_CONTRACTID, &kDI_OS_INTEGRATION_CID}, {NULL}};
 
 static const mozilla::Module::CategoryEntry kPermissionsCategories[] = {
-  { XPCOM_DIRECTORY_PROVIDER_CATEGORY, "bg-osutils", DI_OS_INTEGRATION_CONTRACTID },
-  { NULL }
-};
+    {XPCOM_DIRECTORY_PROVIDER_CATEGORY, "bg-osutils",
+     DI_OS_INTEGRATION_CONTRACTID},
+    {NULL}};
 
-static const mozilla::Module kModule = {
-  mozilla::Module::kVersion,
-  kCIDs,
-  kContracts
-};
+static const mozilla::Module kModule = {mozilla::Module::kVersion, kCIDs,
+                                        kContracts};
 
 NSMODULE_DEFN(diosintegration) = &kModule;
