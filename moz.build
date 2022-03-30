@@ -6,13 +6,13 @@
 CONFIGURE_SUBST_FILES += ['installer/Makefile']
 
 DIRS += [
+    'base',
     'components',
     'langpacks',
     'locales',
-    'base',
+    'src',
     'modules',
     'themes',
-    'src',
     'sidebars',
     'extensions',
     'branding',
@@ -22,5 +22,5 @@ DIRS += [
     'app',
 ]
 
-#DIST_SUBDIR = 'editor'
-#export('DIST_SUBDIR')
+# DIST_SUBDIR = 'editor'
+# export('DIST_SUBDIR')

@@ -260,4 +260,4 @@ pref("bluegriffon.kungfudeathgrip.shortcuts2017", false);
 pref("bluegriffon.release_notes.last", "");
 
 pref("browser.preferences.defaultPerformanceSettings.enabled", "false");
-pref("layers.acceleration.disabled", "true");
+// pref("layers.acceleration.disabled", "true");
