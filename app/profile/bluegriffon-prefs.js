@@ -1,8 +1,8 @@
 #filter substitution
 
-pref("toolkit.defaultChromeURI", "chrome://bluegriffon/content/xul/bluegriffon.xhtml");
-pref("browser.chromeURL", "chrome://bluegriffon/content/xul/bluegriffon.xhtml");
-pref("browser.hiddenWindowChromeURL", "chrome://bluegriffon/content/xul/hiddenWindow.xul");
+pref("toolkit.defaultChromeURI", "chrome://editor/content/main/editor.xhtml");
+pref("browser.chromeURL", "chrome://editor/content/main/editor.xhtml");
+pref("browser.hiddenWindowChromeURL", "chrome://bluegriffon/editor/content/hiddenWindow/hiddenWindow.xhtml");
 pref("toolkit.singletonWindowType", "bluegriffon");
 pref("bluegriffon.singletonWindowType", "bluegriffon");
 
